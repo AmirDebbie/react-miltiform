@@ -3,11 +3,16 @@ import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 import { AppBar, Toolbar, IconButton, Typography, Button, TextField } from '@material-ui/core';
 import { Menu } from '@material-ui/icons';
 
-function FormUserDetails(props) {
+function FormPersonalDetails(props) {
 
     const nextOne = e => {
         e.preventDefault();
         props.nextStep();
+    }
+
+    const prevOne = e => {
+        e.preventDefault();
+        props.prevStep();
     }
 
     const { values, handleChange } = props;
@@ -21,29 +26,29 @@ function FormUserDetails(props) {
                             <Menu />
                         </IconButton>
                         <Typography variant='h6'>
-                            Enter User Details
+                            Enter Personal Details
                         </Typography>
                     </Toolbar>
                 </AppBar>
                 <TextField 
-                label="First Name"
-                placeholder="Enter Your First Name"
-                onChange={handleChange('firstName')}
-                defaultValue={values.firstName}
+                label="Occupation"
+                placeholder="Enter Your Occupation"
+                onChange={handleChange('occupation')}
+                defaultValue={values.occupation}
                 />
                 <br />
                 <TextField 
-                label="Last Name"
-                placeholder="Enter Your Last Name"
-                onChange={handleChange('lastName')}
-                defaultValue={values.lastName}
+                label="City"
+                placeholder="Enter Your City"
+                onChange={handleChange('city')}
+                defaultValue={values.city}
                 />
                 <br />
                 <TextField 
-                label="Email"
-                placeholder="Enter Your Email"
-                onChange={handleChange('email')}
-                defaultValue={values.email}
+                label="Bio"
+                placeholder="Enter Your Bio"
+                onChange={handleChange('bio')}
+                defaultValue={values.bio}
                 />
                 <br />
                 <Button 
@@ -52,6 +57,11 @@ function FormUserDetails(props) {
                 style={styles.button}
                 onClick={nextOne}
                 >Continue</Button>
+                <Button 
+                variant="contained"
+                style={styles.button}
+                onClick={prevOne}
+                >Back</Button>
             </React.Fragment>
         </MuiThemeProvider>
     )
@@ -64,5 +74,5 @@ const styles = {
 }
 
 
-export default FormUserDetails;
+export default FormPersonalDetails;
 

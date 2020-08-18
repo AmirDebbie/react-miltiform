@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import FormUserDetails from './FormUserDetails.js';
+import FormPersonalDetails from './FormPersonalDetails.js';
+import Confirm from './Confirm';
+import Success from './Success.js';
 
 function UserForm(props) {
 
@@ -27,7 +30,7 @@ function UserForm(props) {
             case 'lastName': 
                 setLastName(e.target.value);
                 break;
-            case 'emailName': 
+            case 'email': 
                 setEmail(e.target.value);
                 break;
             case 'occupation': 
@@ -53,13 +56,22 @@ function UserForm(props) {
             />
         );
         case 2: return(
-            <h1>FormPersonalDetails</h1>
+            <FormPersonalDetails
+            nextStep={nextStep}
+            prevStep={prevStep}
+            handleChange={handleChange}
+            values={values}
+            />
         );
         case 3: return(
-            <h1>Confirm</h1>
+            <Confirm 
+            nextStep={nextStep}
+            prevStep={prevStep}
+            values={values}
+            />
         );
         case 4: return(
-            <h1>Success</h1>
+            <Success />
         )
     }
 }
